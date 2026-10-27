@@ -1,0 +1,20 @@
+services:
+  wine-fridge:
+    build: .
+    container_name: wine-fridge
+    ports:
+      # Change the left-hand side if 8300 is taken on your Unraid box.
+      - "8300:8000"
+    environment:
+      # Your llama.cpp server (OpenAI-compatible API)
+      LLAMA_SERVER_URL: "http://192.168.1.132:8081"
+      # Model name exactly as shown by `curl http://192.168.1.132:8081/v1/models`
+      LLAMA_MODEL: "Qwen3.5-9B"
+      # Comma-separated shelf names
+      SHELVES: "Shelf 1,Shelf 2,Shelf 3,Shelf 4,Shelf 5,Shelf 6,Shelf 7"
+      # How long to wait for the model to answer (a 27B model can be slow)
+      LLM_TIMEOUT_SECONDS: "600"
+    volumes:
+      # SQLite database + imported spreadsheet live here
+      - ./data:/app/data
+    restart: unless-stopped

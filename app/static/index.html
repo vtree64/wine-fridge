@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0e">
+  <title>Vinotag — Wine Fridge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="wordmark">
+        VINOTAG
+        <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <button id="settingsBtn" class="icon-btn" aria-label="Settings" title="Settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34h.09a1.7 1.7 0 0 0 1-1.55V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v.09a1.7 1.7 0 0 0 1.55 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z"/></svg>
+      </button>
+    </header>
+
+    <div class="toolbar" id="toolbar">
+      <div class="search-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="searchInput" type="search" placeholder="Search" autocomplete="off" aria-label="Search bottles">
+      </div>
+      <button id="modeToggle" class="mode-btn" aria-label="Toggle list mode">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.2" fill="currentColor" stroke="none"/></svg>
+        <span>List mode</span>
+      </button>
+    </div>
+
+    <main>
+      <!-- ============ FRIDGE VIEW ============ -->
+      <section id="fridgeView" class="view">
+        <div class="fridge">
+          <div class="fridge-plate">VINOTAG</div>
+          <div class="fridge-body" id="fridgeBody">
+            <div class="fridge-watermark" aria-hidden="true">VINOTAG</div>
+          </div>
+        </div>
+        <button id="fab" class="fab" aria-label="Add wine" title="Add wine">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </section>
+
+      <!-- ============ LIST VIEW ============ -->
+      <section id="listView" class="view hidden">
+        <div id="listContent"></div>
+      </section>
+
+      <!-- ============ ADD VIEW ============ -->
+      <section id="addView" class="view hidden">
+        <div class="card">
+          <h2>Photograph the label</h2>
+          <div class="camera" id="photoBox">
+            <div class="camera-placeholder" id="photoPlaceholder">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <p>Take a clear photo of the front wine label.</p>
+            </div>
+            <img id="preview" alt="Wine label preview" class="hidden">
+          </div>
+          <label for="photoInput" class="btn secondary full">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            Take label photo
+          </label>
+          <input id="photoInput" type="file" accept="image/*" capture="environment" class="hidden">
+          <p class="hint" style="margin-top:10px;">Fill the frame with the label and avoid glare.</p>
+          <button id="analyzeBtn" class="btn primary full" disabled style="margin-top:14px;">Identify wine</button>
+          <div id="analyzeStatus" class="status info hidden"></div>
+        </div>
+
+        <div id="resultCard" class="card hidden">
+          <h2>Confirm the wine</h2>
+          <span id="confidenceBadge" class="badge hidden"></span>
+          <p class="hint">AI identification is a suggestion — edit anything that looks wrong before saving.</p>
+
+          <label for="fWine">Wine</label>
+          <input id="fWine" type="text" autocomplete="off">
+
+          <label for="fVariety">Variety</label>
+          <input id="fVariety" type="text" autocomplete="off">
+
+          <label for="fVintage">Vintage</label>
+          <input id="fVintage" type="text" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="YYYY">
+
+          <label for="fProducer">Vineyard / Producer</label>
+          <input id="fProducer" type="text" autocomplete="off">
+
+          <label for="fNotes">Notes</label>
+          <textarea id="fNotes" placeholder="Optional notes or identification uncertainty"></textarea>
+
+          <label class="shelf-label">Which shelf?</label>
+          <div id="shelfPicker" class="shelf-picker"></div>
+
+          <div class="row">
+            <button id="resetBtn" class="btn secondary">Start over</button>
+            <button id="saveBtn" class="btn primary" disabled>Save wine</button>
+          </div>
+          <div id="saveStatus" class="status hidden"></div>
+        </div>
+      </section>
+
+      <!-- ============ SETTINGS VIEW ============ -->
+      <section id="settingsView" class="view hidden">
+        <div class="card">
+          <h2>Label recognition</h2>
+          <div class="kv"><span>Server</span><span id="llmUrl" class="kv-val mono"></span></div>
+          <div class="kv"><span>Model</span><span id="llmModel" class="kv-val mono"></span></div>
+          <div class="kv"><span>Status</span><span id="llmStatus" class="kv-val">—</span></div>
+          <button id="llmCheckBtn" class="btn secondary full" style="margin-top:14px;">Check connection</button>
+        </div>
+
+        <div class="card">
+          <h2>Fridge</h2>
+          <div class="kv"><span>Shelves</span><span id="shelfList" class="kv-val"></span></div>
+          <div class="kv"><span>Bottles</span><span id="bottleCount" class="kv-val"></span></div>
+          <a id="exportBtn" class="btn secondary full" href="/api/export.csv" style="margin-top:14px;">Export CSV</a>
+        </div>
+
+        <div class="card">
+          <h2>Import</h2>
+          <p class="hint">Import bottles from a Wine Inventory spreadsheet (.xlsx). Bottles that already exist are skipped, so it's safe to run again.</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button id="importBundledBtn" class="btn secondary">Import bundled spreadsheet</button>
+            <button id="importFileBtn" class="btn secondary">Import from file…</button>
+            <input type="file" id="importFileInput" accept=".xlsx" hidden>
+          </div>
+          <div id="importStatus" class="status info hidden" style="margin-top:12px;"></div>
+        </div>
+
+        <div class="card">
+          <h2>About</h2>
+          <p class="hint">Vinotag runs on your Unraid server. Label photos are sent only to your local llama.cpp server — nothing leaves your network. Inventory is stored in a local SQLite database.</p>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button data-view="add" class="nav-btn" aria-label="Add wine">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        <span>Add</span>
+      </button>
+      <button data-view="fridge" class="nav-btn active" aria-label="Fridge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M6 10h12"/><path d="M9 5.5v2"/><path d="M9 13.5v3"/></svg>
+        <span>Fridge</span>
+      </button>
+      <button data-view="list" class="nav-btn" aria-label="List">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="4.5" cy="18" r="1.2" fill="currentColor" stroke="none"/></svg>
+        <span>List</span>
+      </button>
+      <button data-view="settings" class="nav-btn" aria-label="Settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34h.09a1.7 1.7 0 0 0 1-1.55V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v.09a1.7 1.7 0 0 0 1.55 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z"/></svg>
+        <span>Settings</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Bottle detail bottom sheet -->
+  <div id="sheetBackdrop" class="sheet-backdrop hidden"></div>
+  <div id="sheet" class="sheet hidden" role="dialog" aria-modal="true">
+    <div class="sheet-handle"></div>
+    <div id="sheetContent"></div>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

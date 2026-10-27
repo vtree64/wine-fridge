@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Wine Fridge</Name>
+  <Repository>ghcr.io/vtree64/wine-fridge:latest</Repository>
+  <Registry>https://ghcr.io/vtree64/wine-fridge</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/vtree64/wine-fridge/issues</Support>
+  <Project>https://github.com/vtree64/wine-fridge</Project>
+  <Overview>Vinotag: self-hosted wine fridge inventory. Photograph a label, a local llama.cpp vision model identifies it, and the bottle is tracked on your fridge shelves. FastAPI + SQLite, no cloud.</Overview>
+  <Category>Productivity: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8300]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/vtree64/wine-fridge/main/unraid/wine-fridge.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/vtree64/wine-fridge/main/unraid/icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Web UI Port" Target="8000" Default="8300" Mode="tcp" Description="Port for the Vinotag web app/API." Type="Port" Display="always" Required="true" Mask="false">8300</Config>
+  <Config Name="App Data" Target="/app/data" Default="/mnt/user/appdata/wine-fridge" Mode="rw" Description="Persistent SQLite database (inventory + label photos)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wine-fridge</Config>
+  <Config Name="LLAMA_SERVER_URL" Target="LLAMA_SERVER_URL" Default="http://192.168.1.132:8081" Description="Base URL of your llama.cpp server (OpenAI-compatible API)." Type="Variable" Display="advanced" Required="true" Mask="false">http://192.168.1.132:8081</Config>
+  <Config Name="LLAMA_MODEL" Target="LLAMA_MODEL" Default="Qwen-3.8-27B-Q4" Description="Model name as reported by the llama.cpp server (see Settings in the app)." Type="Variable" Display="advanced" Required="true" Mask="false">Qwen-3.8-27B-Q4</Config>
+  <Config Name="SHELVES" Target="SHELVES" Default="Shelf 1,Shelf 2,Shelf 3,Shelf 4,Shelf 5,Shelf 6,Shelf 7" Description="Comma-separated shelf names, top to bottom." Type="Variable" Display="advanced" Required="false" Mask="false">Shelf 1,Shelf 2,Shelf 3,Shelf 4,Shelf 5,Shelf 6,Shelf 7</Config>
+  <Config Name="LLM_TIMEOUT_SECONDS" Target="LLM_TIMEOUT_SECONDS" Default="600" Description="How long to wait for the model to identify a label." Type="Variable" Display="advanced" Required="false" Mask="false">600</Config>
+</Container>
