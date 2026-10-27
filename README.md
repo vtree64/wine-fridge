@@ -1,4 +1,4 @@
-# Vinotag — self-hosted wine fridge inventory
+# Wine Fridge — self-hosted wine fridge inventory
 
 A Dockerized replacement for the old Google Apps Script wine-fridge app.
 Photograph a wine label, a local LLM (via your llama.cpp server) identifies it,
@@ -7,7 +7,7 @@ database. No Google, no cloud — everything stays on your network.
 
 ## Features
 
-- **Fridge view** — dark "VINOTAG" board: each shelf is a row of bottle dots
+- **Fridge view** — dark "Wine Fridge" board: each shelf is a row of bottle dots
   (color = red / white / rosé), with per-shelf counts. Tap a dot for details.
 - **List mode** — grouped-by-shelf list with label thumbnails.
 - **Search** — filters by wine, producer, variety, vintage, shelf, or notes.
