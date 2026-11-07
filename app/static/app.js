@@ -1,5 +1,5 @@
 /* ============================================================
-   Vinotag — frontend logic (vanilla JS, no dependencies)
+   WineChill — frontend logic (vanilla JS, no dependencies)
    ============================================================ */
 
 const $ = (id) => document.getElementById(id);

@@ -41,7 +41,7 @@ Then push this folder:
 cd wine-fridge
 git init
 git add -A
-git commit -m "Vinotag: self-hosted wine fridge inventory"
+git commit -m "WineChill: self-hosted wine fridge inventory"
 git remote add origin https://github.com/<you>/wine-fridge.git
 git push -u origin main
 ```

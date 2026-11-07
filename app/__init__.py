@@ -1,1 +1,1 @@
-# Vinotag — self-hosted wine fridge inventory
+# WineChill — self-hosted wine fridge inventory

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """One-time import of the old Google Sheet export (Wine Inventory.xlsx)
-into the Vinotag SQLite database.
+into the WineChill SQLite database.
 
 Usage (from the project folder, on the host):
     docker compose run --rm wine-fridge python import_xlsx.py

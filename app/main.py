@@ -23,7 +23,7 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title="Vinotag", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="WineChill", version="1.0.0", lifespan=lifespan)
 
 
 # ---------------------------------------------------------------------------

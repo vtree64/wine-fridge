@@ -9,7 +9,7 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/vtree64/wine-fridge/issues</Support>
   <Project>https://github.com/vtree64/wine-fridge</Project>
-  <Overview>Vinotag: self-hosted wine fridge inventory. Photograph a label, a local llama.cpp vision model identifies it, and the bottle is tracked on your fridge shelves. FastAPI + SQLite, no cloud.</Overview>
+  <Overview>WineChill: self-hosted wine fridge inventory. Photograph a label, a local llama.cpp vision model identifies it, and the bottle is tracked on your fridge shelves. FastAPI + SQLite, no cloud.</Overview>
   <Category>Productivity: Tools:</Category>
   <WebUI>http://[IP]:[PORT:8300]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/vtree64/wine-fridge/main/unraid/wine-fridge.xml</TemplateURL>
@@ -21,7 +21,7 @@
   <DonateText/>
   <DonateLink/>
   <Requires/>
-  <Config Name="Web UI Port" Target="8000" Default="8300" Mode="tcp" Description="Port for the Vinotag web app/API." Type="Port" Display="always" Required="true" Mask="false">8300</Config>
+  <Config Name="Web UI Port" Target="8000" Default="8300" Mode="tcp" Description="Port for the WineChill web app/API." Type="Port" Display="always" Required="true" Mask="false">8300</Config>
   <Config Name="App Data" Target="/app/data" Default="/mnt/user/appdata/wine-fridge" Mode="rw" Description="Persistent SQLite database (inventory + label photos)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/wine-fridge</Config>
   <Config Name="LLAMA_SERVER_URL" Target="LLAMA_SERVER_URL" Default="http://192.168.1.132:8081" Description="Base URL of your llama.cpp server (OpenAI-compatible API)." Type="Variable" Display="advanced" Required="true" Mask="false">http://192.168.1.132:8081</Config>
   <Config Name="LLAMA_MODEL" Target="LLAMA_MODEL" Default="Qwen-3.8-27B-Q4" Description="Model name as reported by the llama.cpp server (see Settings in the app)." Type="Variable" Display="advanced" Required="true" Mask="false">Qwen-3.8-27B-Q4</Config>
